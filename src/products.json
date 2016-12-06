@@ -1,0 +1,184 @@
+[
+    {
+        "prodID": "0000001",
+        "prodName": "Almond Toe Court Shoes",
+        "color": "Black",
+        "retailPrice": 99.00,
+        "salePrice":0.00,
+        "gender": "Female",
+        "category": "Footwear",
+        "size": {
+            "Black": 6.5
+        },
+        "stock": 5,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    },
+    {
+        "prodID": "0000002",
+        "prodName": "Suede Shoes",
+        "color": "Blue",
+        "retailPrice": 42.00,
+        "salePrice":0.00,
+        "gender": "Female",
+        "category": "Footwear",
+        "size": {
+            "Blue": 6.5
+        },
+        "stock": 4,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    },
+    {
+        "prodID": "0000003",
+        "prodName": "Leather Driver Saddle Loafers",
+        "color": "Tan",
+        "retailPrice": 34.00,
+        "salePrice":0.00,
+        "gender": "Male",
+        "category": "Footwear",
+        "size": {
+            "Tan": 6.5
+        },
+        "stock": 12,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    },
+    {
+        "prodID": "0000004",
+        "prodName": "Flip Flops",
+        "color": "Red",
+        "retailPrice": 19.00,
+        "salePrice":0.00,
+        "gender": "Male",
+        "category": "Footwear",
+        "size": {
+            "Red": 6.5
+        },
+        "stock": 6,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    },
+    {
+        "prodID": "0000005",
+        "prodName": "Flip Flops",
+        "color": "Blue",
+        "retailPrice": 19.00,
+        "salePrice":0.00,
+        "gender": "Male",
+        "category": "Footwear",
+        "size": {
+            "Blue": 6.5
+        },
+        "stock": 0,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    },
+    {
+        "prodID": "0000006",
+        "prodName": "Gold Button Cardigan",
+        "color": "Black",
+        "retailPrice": 167.00,
+        "salePrice":0.00,
+        "gender": "Female",
+        "category": "Casualwear",
+        "size": {
+            "Black": "Medium"
+        },
+        "stock": 6,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    },
+    {
+        "prodID": "0000007",
+        "prodName": "Cotton Shorts",
+        "color": "Medium Red",
+        "retailPrice": 30.00,
+        "salePrice":0.00,
+        "gender": "Female",
+        "category": "Casualwear",
+        "size": {
+            "Medium Red": "Medium"
+        },
+        "stock": 5,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    },
+    {
+        "prodID": "0000008",
+        "prodName": "Fine Stripe Short Sleeve Shirt",
+        "color": "Grey",
+        "retailPrice": 49.99,
+        "salePrice":0.00,
+        "gender": "Male",
+        "category": "Casualwear",
+        "size": {
+            "Grey": "Medium"
+        },
+        "stock": 9,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    },
+    {
+        "prodID": "0000009",
+        "prodName": "Fine Stripe Short Sleeve Shirt",
+        "color": "Green",
+        "retailPrice": 49.99,
+        "salePrice":39.00,
+        "gender": "Male",
+        "category": "Casualwear",
+        "size": {
+            "Green": "Medium"
+        },
+        "stock": 3,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    },
+    {
+        "prodID": "0000010",
+        "prodName": "Sharkskin Waistcoat",
+        "color": "Charcoal",
+        "retailPrice": 75.00,
+        "salePrice":0.00,
+        "gender": "Male",
+        "category": "Formalwear",
+        "size": {
+            "Charcoal": "Medium"
+        },
+        "stock": 2,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    },
+    {
+        "prodID": "0000011",
+        "prodName": "Lightweight Patch Pocket Blazer",
+        "color": "Deer",
+        "retailPrice": 175.50,
+        "salePrice":0.00,
+        "gender": "Male",
+        "category": "Formalwear",
+        "size": {
+            "Deer": "Medium"
+        },
+        "stock": 1,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    },
+    {
+        "prodID": "0000012",
+        "prodName": "Bird Print Dress",
+        "color": "Black",
+        "retailPrice": 270.00,
+        "salePrice":0.00,
+        "gender": "Female",
+        "category": "Formalwear",
+        "size": {
+            "Black": "Medium"
+        },
+        "stock": 10,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    },
+    {
+        "prodID": "0000013",
+        "prodName": "Mid Twist Cut-Out Dress",
+        "color": "Pink",
+        "retailPrice": 540.00,
+        "salePrice":0.00,
+        "gender": "Female",
+        "category": "Formalwear",
+        "size": {
+            "Pink": "Medium"
+        },
+        "stock": 5,
+        "prodImage": "images/blue-seude-shoes.jpeg"
+    }
+]
