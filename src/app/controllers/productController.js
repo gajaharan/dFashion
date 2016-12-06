@@ -3,7 +3,7 @@
 * the view to display the products and add items to basket.
 */
 angular.module('dFashionApp')
-.controller('productCtrl', ['ProductService', function(ProductService) {
+.controller('productCtrl', ['ProductService', 'BasketService', function(ProductService, BasketService) {
   var vm = this;
   var SERVER_ERROR = ' Unable to get products. Please try again later.'
   vm.message = '';
@@ -18,7 +18,7 @@ angular.module('dFashionApp')
 	}
 
   addItem = function(product){
-
+    BasketService.addItem(product);
   };
 
   getAllProducts();

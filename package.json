@@ -37,6 +37,7 @@
     "karma" : "*",
     "karma-junit-reporter" : "*",
     "karma-jasmine" : "*",
+    "jasmine-core" : "*",
     "karma-ng-scenario" : "*",
     "karma-phantomjs-launcher": "^0.1.4"
   }

@@ -1,0 +1,15 @@
+<div class="header" ng-controller="basketCtrl as basket">
+    <div id="logo" href="/">
+        <img src="images/df-logo.png" />
+        <div id="searchdiv">
+           <input type="text" placeholder="Search" />
+        </div>
+    </div>
+
+    <div id="basket">
+        <div id="basket-item">
+          <span id="basket-text"> Total:&nbsp; {{basket.getTotalPrice() | currency:"£":2}} ({{basket.getBasketSize()}}) &nbsp;</span>
+          <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>

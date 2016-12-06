@@ -8,13 +8,94 @@ body {
   max-width: 100%;
 }
 
+.header {
+  height: 54px;
+  background-color: #000;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  z-index: 100;
+}
+
+.header #logo {
+  z-index: 1;
+  position: absolute;
+  left: 30px;
+  color: #2ECCFA;
+  transition: .3s;
+  cursor: pointer;
+}
+.header #logo img {
+  height: 53px;
+}
+
+.header #basket {
+  position: absolute;
+  //right: 60px;
+  right: 0;
+  padding: 10px;
+  line-height: 30px;
+  background: ##dcd6da;
+  color: #ffffff;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -0-transition: .3s;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.header #basket #basket-item {
+  float: left;
+  font-size: 18px;
+  padding: 0 15px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.header #searchdiv {
+  margin-left: 60px;
+  display: inline-block;
+}
+
+.header #searchdiv input {
+  height: 25px;
+  border: 0;
+  padding-left: 10px;
+}
+
+.header #basket #basket-item i:hover {
+  color: #7A4BD8;
+}
+
+
+#basket-text {
+  font-size: 14px;
+  color: #FFF;
+}
 
 #top-container {
-    height:400px;
-    width: 100%;
-    background-size: cover;
-    background-repeat:no-repeat;
-    background-position:right center;
+  height:400px;
+  width: 100%;
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position:right center;
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    height: 90px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .header #logo {
+    width: 100px;
+  }
+
+  .header #searchdiv {
+    margin-left: 100px;
+  }
 }
 
 #top-row {
@@ -27,35 +108,35 @@ body {
 }
 
 .prod-image img {
-    max-width: 100%;
-    width: auto\9;
-    height: auto;
-    vertical-align: middle;
-    border: 0;
+  max-width: 100%;
+  width: auto\9;
+  height: auto;
+  vertical-align: middle;
+  border: 0;
 }
 
 .item-details span.price {
-    width: 49%;
+  width: 49%;
 }
 
 .item-details span.savings {
-    width: 49%;
-    text-align: right;
-    float: right;
+  width: 49%;
+  text-align: right;
+  float: right;
 }
 
 .selectSize {
-    display: block;
-    float: left;
-    width: 100%;
-    margin-bottom: 10px;
+  display: block;
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .buy-btn {
-    background-image: none;
-    background-color: #e9aa1f;
-    border-color: rgba(0,0,0,.1);
-    font-weight: normal;
-    color: #fff;
-    float: right;
+  background-image: none;
+  background-color: #e9aa1f;
+  border-color: rgba(0,0,0,.1);
+  font-weight: normal;
+  color: #fff;
+  float: right;
 }
