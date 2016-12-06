@@ -1,0 +1,61 @@
+body {
+  background: #fff;
+  font-family: 'Palanquin', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+
+#top-container {
+    height:400px;
+    width: 100%;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position:right center;
+}
+
+#top-row {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.margin-top {
+  margin-top: 50px;
+}
+
+.prod-image img {
+    max-width: 100%;
+    width: auto\9;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+}
+
+.item-details span.price {
+    width: 49%;
+}
+
+.item-details span.savings {
+    width: 49%;
+    text-align: right;
+    float: right;
+}
+
+.selectSize {
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.buy-btn {
+    background-image: none;
+    background-color: #e9aa1f;
+    border-color: rgba(0,0,0,.1);
+    font-weight: normal;
+    color: #fff;
+    float: right;
+}

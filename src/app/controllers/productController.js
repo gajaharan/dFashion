@@ -8,7 +8,7 @@ angular.module('dFashionApp')
   var SERVER_ERROR = ' Unable to get products. Please try again later.'
   vm.message = '';
 
-  var getAllProducts = function() {
+  getAllProducts = function() {
 	  ProductService.getAllProducts().then(function (result) {
 	    vm.productList = result;
 	  }, function (result) { // on failure
@@ -17,7 +17,12 @@ angular.module('dFashionApp')
 	  });
 	}
 
+  addItem = function(product){
+
+  };
+
   getAllProducts();
 
   vm.getAllProducts = getAllProducts;
+  vm.addItem = addItem;
 }]);
