@@ -17,8 +17,13 @@ angular.module('dFashionApp')
 	  });
 	}
 
-  addItem = function(product){
-    BasketService.addItem(product);
+  addItem = function(index, product){
+    if (product.stock > 0) {
+      BasketService.addItem(product);
+      product.stock--;
+      vm.productList[index] = product;
+    }
+
   };
 
   getAllProducts();

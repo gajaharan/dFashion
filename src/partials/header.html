@@ -1,15 +1,33 @@
 <div class="header" ng-controller="basketCtrl as basket">
     <div id="logo" href="/">
         <img src="images/df-logo.png" />
-        <div id="searchdiv">
+        <div id="search-div">
            <input type="text" placeholder="Search" />
         </div>
     </div>
 
     <div id="basket">
-        <div id="basket-item">
+        <div id="basket-item" ng-click="basket.goToBasket()">
           <span id="basket-text"> Total:&nbsp; {{basket.getTotalPrice() | currency:"£":2}} ({{basket.getBasketSize()}}) &nbsp;</span>
           <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+        </div>
+    </div>
+    <div class="basket-popup">
+        <div id="popup-wrap" ng-show="basket.basketItemAdded">
+            <div id="popup">
+                <div class="basket-arrow"></div>
+                <div class="closeBasket row-fluid" ng-click="closeBasket()">
+                    <p>
+                        Close Basket
+                    </p>
+                </div>
+                <p id="popup-message">The item has been added to your basket</p>
+                <div class="row-fluid btn-group">
+                    <button class="btn goToBasket" ng-click="basket.goToBasket()">
+                        View Basket
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -3,7 +3,7 @@
     <h3>Refine by</h3>
   </aside>
   <div class="col-md-10">
-    <div class="col-md-4 col-xs-6" ng-repeat="productItem in products.productList track by $index">
+    <div class="col-md-4 col-xs-6" ng-repeat="productItem in products.productList">
       <div class="prod-image">
         <img ng-src="{{productItem.prodImage}}" alt="productItem.prodName" />
       </div>
@@ -33,7 +33,7 @@
              <option value=""></option>
           </select>
         </div>
-          <div class="buy-btn btn btn-inverse" ng-disabled="productItem.stock == 0" ng-click="products.addItem($index, productItem)">
+          <div class="buy-btn btn btn-inverse" ng-click="products.addItem(productItem)">
              Buy Now
           </div>
         </div>

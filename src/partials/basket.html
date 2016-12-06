@@ -1,0 +1,82 @@
+<div id="viewBasket" class="siteBasket">
+  <div class="basketContent col-md-12">
+    <div class="viewBasketTitle">
+        <p>Your Basket</p>
+    </div>
+
+    <div class="viewBasketHeader col-md-12">
+      <div class="itemOuterContainer" ng-show="basket.getBasketSize() > 0">
+        <div class="col-md-1 col-xs-1"></div>
+        <div class="col-md-3 col-xs-3">Item Description</div>
+        <div class="col-md-2 col-xs-2">Size</div>
+        <div class="col-md-2 col-xs-2">Quantity</div>
+        <div class="col-md-2 col-xs-2">Price</div>
+        <div class="col-md-1 col-xs-1">Remove</div>
+      </div>
+      <div class="itemOuterContainer" ng-show="basket.getBasketSize() == 0">
+        <span> Your shopping basket is currently empty </span>
+      </div>
+    </div>
+
+    <div class="col-md-12 col-xs-12">
+      <div ng-repeat="basketItem in basket.getBasketItems()" class="clearfix">
+        <div class="prodImage col-md-1 col-xs-1">
+            <img ng-src="{{basketItem.prodImage}}" alt="basketItem.prodName" />
+        </div>
+
+        <div class="itemOuterContainer">
+          <div class="productName col-md-3 col-xs-3">
+                  <span ng-bind="basketItem.prodName"></span>
+          </div>
+
+          <div class="hideInMiniBasket col-md-2 col-xs-2"><span>0</span></div>
+
+          <div class="orderQuantity col-md-2 col-xs-2">
+              <span class="hideInViewBasket small" ng-hide ng-bind="basketItem.quantity">Qty.</span>&nbsp;
+          </div>
+
+          <div class="total col-md-2 col-xs-2">
+            <span data-bind="text: FormattedTotal">{{basketItem.retailPrice | currency:"£":2}}</span>
+          </div>
+          <div class="total col-md-1 col-xs-1" ng-click="basket.removeItem(basketItem)">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 margin-top">
+        <div class="col-md-8 text-right">
+            <p class="inline-block">Voucher code:</p>
+            <input class="totalQuantity inline-block" style="margin: 0px 10px" type="text" placeholder="" ng-model="basket.voucherCode"  />
+              <div class="buy-btn btn btn-inverse" ng-click="basket.applyVoucherCode()">
+                  Apply code
+              </div>
+            <p ng-show="voucherCodeFailed">The voucher code you have entered has not been recognised.</p>
+            <div class="clear"></div>
+        </div>
+        <div class="basketTotals clearfix col-md-4 text-right" >
+            <p class="inline-block">Total Items</p>
+            <p class="totalQuantity inline-block" ng-bind="basket.getBasketSize()"></p>
+            <div class="basketTotals clearfix text-right" ng-repeat="voucher in basket.appliedDiscountVouchers">
+                <p>{{voucher.voucherName}} &nbsp;-{{voucher.discountAmount | currency:"£":2}}</p>
+            </div>
+        </div>
+
+        <div class="basketTotals goodsTotal clearfix text-right">
+            <p class="inline-block">Goods Total (excluding delivery)</p>
+            <p class="inline-block">{{basket.getTotalPrice() | currency:"£":2}}</p>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="showInViewBasket">
+  <div class="pull-right basketCheckoutBtn">
+      <button class="btn btn-danger pull-right goToCheckout" ng-show="basket.getBasketSize() > 0">
+          Checkout
+      </button>
+
+  </div>
+  <div class="pull-left basketContinueBtn" ng-click="basket.continueShopping()">
+      <button class="btn btn-small pull-right continueShopping">Continue Shopping</button>
+  </div>
+</div>
