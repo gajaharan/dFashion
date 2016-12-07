@@ -44,6 +44,9 @@ angular.module('dFashionApp')
      if(vm.voucherCode.length > 0) {
        vm.voucherCodeFailed = BasketService.setVouchercode(vm.voucherCode);
      }
+     else {
+       vm.voucherCodeFailed = true;
+     }
   }
 
   getAvailableVouchers = function() {

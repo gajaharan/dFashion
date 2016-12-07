@@ -12,6 +12,11 @@ body {
   clear: both;
 }
 
+.error {
+  font-weight: bold;
+  color: red;
+}
+
 .inline-block {
   display:inline-block;
 }
