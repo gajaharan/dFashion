@@ -46,8 +46,8 @@ angular.module('dFashionApp')
   };
 
   var removeItem = function(product){
-    console.log("removeItem");
     var index =  basket.indexOf(product);
+    $rootScope.$broadcast('item-removed', basket[index].product);
     if (basket[index].quantity > 1) {
       basket[index].quantity--;
     }
@@ -57,7 +57,6 @@ angular.module('dFashionApp')
     }
 
     updateTotalPrice();
-    $rootScope.$broadcast('basket-updated');
   };
 
   var updateTotalPrice = function(){

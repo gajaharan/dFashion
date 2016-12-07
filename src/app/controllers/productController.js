@@ -3,10 +3,19 @@
 * the view to display the products and add items to basket.
 */
 angular.module('dFashionApp')
-.controller('productCtrl', ['ProductService', 'BasketService', function(ProductService, BasketService) {
+.controller('productCtrl', ['$rootScope', 'ProductService', 'BasketService', function($rootScope, ProductService, BasketService) {
   var vm = this;
   var SERVER_ERROR = ' Unable to get products. Please try again later.'
   vm.message = '';
+
+  $rootScope.$on('item-removed',function(event, product){
+    product.stock++;
+    for(index in vm.productList) {
+      if (vm.productList[index].prodID == product.prodID) {
+        vm.productList[index] = product
+      }
+    }
+  });
 
   getAllProducts = function() {
 	  ProductService.getAllProducts().then(function (result) {
@@ -23,7 +32,6 @@ angular.module('dFashionApp')
       product.stock--;
       vm.productList[index] = product;
     }
-
   };
 
   getAllProducts();
