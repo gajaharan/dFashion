@@ -1,6 +1,10 @@
 angular.module('dFashionApp')
 .controller('basketCtrl', ['$scope','$rootScope', 'BasketService', '$timeout', '$location', function($scope, $rootScope, BasketService, $timeout, $location) {
   var vm = this;
+  vm.basketItemAdded = false;
+  vm.voucherCode ="";
+  vm.appliedDiscountVouchers = BasketService.getAppliedDiscountVouchers();
+  vm.voucherCodeFailed = false;
 
   $rootScope.$on('basket-updated',function(){
     vm.basketItemAdded = true;
@@ -36,6 +40,16 @@ angular.module('dFashionApp')
     BasketService.removeItem(product);
   }
 
+  applyVoucherCode = function() {
+     if(vm.voucherCode.length > 0) {
+       vm.voucherCodeFailed = BasketService.setVouchercode(vm.voucherCode);
+     }
+  }
+
+  getAvailableVouchers = function() {
+    return BasketService.getAvailableVouchers();
+  }
+
   vm.getBasketSize = getBasketSize;
   vm.getTotalPrice = getTotalPrice;
   vm.getBasketItems = getBasketItems;
@@ -43,5 +57,7 @@ angular.module('dFashionApp')
   vm.continueShopping = continueShopping;
   vm.closeBasket = closeBasket;
   vm.removeItem = removeItem;
+  vm.applyVoucherCode = applyVoucherCode;
+  vm.getAvailableVouchers = getAvailableVouchers;
 
 }]);

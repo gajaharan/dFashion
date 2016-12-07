@@ -1,0 +1,5 @@
+<div class="row" ng-controller="basketCtrl as basket">
+    <div class="col-md-4" class="voucher-container" ng-repeat="voucherItem in basket.getAvailableVouchers()">
+        <span ng-bind="voucherItem.description"></span>
+    </div>
+</div>

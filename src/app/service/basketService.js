@@ -1,17 +1,22 @@
 angular.module('dFashionApp')
-.factory('BasketService', function ($rootScope){
+.factory('BasketService', function ($rootScope, VoucherService){
+  var SERVER_ERROR = ' Unable to get vouchers. Please try again later.'
   var basket = [];
   var vouchers;
   var totalPrice = 0;
   var basketQuantity = 0;
+  var vouchercode;
+  var voucherCodeFailed = false;
+  var discountApplied = false;
+  var appliedDiscountVouchers = [];
 
-  var basketObj = {
-    product: "",
-    prodName : "",
-    quantity : 0,
-    category : "",
-    retailPrice: 0,
-    prodImage: ""
+  function basketObj() {
+    this.product = "";
+    this.prodName = "";
+    this.quantity = 0;
+    this.category = "";
+    this.retailPrice = 0;
+    this.prodImage = "";
   }
 
   var addItem = function(product){
@@ -25,14 +30,15 @@ angular.module('dFashionApp')
     }
 
     if (!productExist) {
-      basketObj.product = product;
-      basketObj.prodID = product.prodID;
-      basketObj.prodName = product.prodName +', ' +product.color;
-      basketObj.category = product.category;
-      basketObj.quantity++;
-      basketObj.retailPrice = product.retailPrice;
-      basketObj.prodImage = product.prodImage;
-      basket.push(basketObj);
+      var obj = new basketObj()
+      obj.product = product;
+      obj.prodID = product.prodID;
+      obj.prodName = product.prodName +', ' +product.color;
+      obj.category = product.category;
+      obj.quantity++;
+      obj.retailPrice = product.retailPrice;
+      obj.prodImage = product.prodImage;
+      basket.push(obj);
     }
 
     updateTotalPrice();
@@ -61,6 +67,12 @@ angular.module('dFashionApp')
       totalPrice = totalPrice + (basket[index].retailPrice * basket[index].quantity);
       basketQuantity = basketQuantity + basket[index].quantity;
     }
+    applyDiscount();
+
+    for (var index in appliedDiscountVouchers) {
+      totalPrice = totalPrice - appliedDiscountVouchers[index].discountAmount;
+    }
+
   };
 
   var getTotalPrice = function(){
@@ -75,11 +87,81 @@ angular.module('dFashionApp')
     return basket;
   }
 
+  getVouchers = function() {
+    VoucherService.getAllVouchers().then(function (result) {
+      vouchers = result;
+    }, function (result) {
+      message = SERVER_ERROR;
+
+    });
+  };
+
+  getVouchers();
+
+
+  applyDiscount = function() {
+    if (vouchers.length > 0 && basket.length > 0) {
+      for (var index in vouchers) {
+        if (appliedDiscountVouchers.indexOf(vouchers[index]) < 0) {
+          if (!discountApplied &&  checkSpendingRequirements(vouchers[index])) {
+            if (vouchers[index].category.length > 0) {
+              if (checkCategoryRequirements(vouchers[index])) {
+                  appliedDiscountVouchers.push(vouchers[index]);
+              }
+            }
+            else {
+              appliedDiscountVouchers.push(vouchers[index]);
+            }
+          }
+          else if ((vouchercode) && (vouchers[index].voucherCode == vouchercode)) {
+            appliedDiscountVouchers.push(vouchers[index]);
+            updateTotalPrice();
+          }
+          else if ((vouchercode) && (vouchers[index].voucherCode != vouchercode)) {
+            voucherCodeFailed = true;
+          }
+        }
+      }
+    }
+
+    if (basket.length == 0) {
+      appliedDiscountVouchers = []
+    }
+  };
+
+  checkSpendingRequirements = function (voucher) {
+    return (voucher.minimumSpend > 0) && (totalPrice > voucher.minimumSpend);
+  };
+
+  checkCategoryRequirements = function (voucher) {
+    for (index in basket) {
+      return voucher.category.indexOf(basket[index].category) > -1
+    }
+  };
+
+
+  var setVouchercode = function(code) {
+    vouchercode = code;
+    applyDiscount();
+    return voucherCodeFailed;
+  }
+
+  var getAppliedDiscountVouchers = function() {
+    return appliedDiscountVouchers;
+  }
+
+  var getAvailableVouchers = function() {
+    return vouchers;
+  }
+
   return {
     addItem : addItem,
     getTotalPrice : getTotalPrice,
     getBasketSize : getBasketSize,
     getBasketItems : getBasketItems,
-    removeItem : removeItem
+    removeItem : removeItem,
+    setVouchercode : setVouchercode,
+    getAppliedDiscountVouchers : getAppliedDiscountVouchers,
+    getAvailableVouchers : getAvailableVouchers
   };
 });
