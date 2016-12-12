@@ -37,6 +37,7 @@ angular.module('dFashionApp')
       obj.category = product.category;
       obj.quantity++;
       obj.retailPrice = product.retailPrice;
+      obj.salePrice = product.salePrice;
       obj.prodImage = product.prodImage;
       basket.push(obj);
     }
@@ -63,7 +64,7 @@ angular.module('dFashionApp')
     totalPrice = 0;
     basketQuantity = 0;
     for (var index in basket) {
-      totalPrice = totalPrice + (basket[index].retailPrice * basket[index].quantity);
+      totalPrice = totalPrice + (checkSalePrice(basket[index]) * basket[index].quantity);
       basketQuantity = basketQuantity + basket[index].quantity;
     }
     applyDiscount();
@@ -72,6 +73,10 @@ angular.module('dFashionApp')
       totalPrice = totalPrice - appliedDiscountVouchers[index].discountAmount;
     }
 
+  };
+
+  var checkSalePrice = function(basketIem){
+    return ((basketIem.salePrice > 0) && (basketIem.salePrice < basketIem.retailPrice)) ? basketIem.salePrice : basketIem.retailPrice;
   };
 
   var getTotalPrice = function(){

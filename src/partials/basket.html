@@ -36,7 +36,7 @@
           </div>
 
           <div class="total col-md-2 col-xs-2">
-            <span data-bind="text: FormattedTotal">{{basketItem.retailPrice | currency:"£":2}}</span>
+            <format-price product="basketItem" is-basket="false"></format-price>
           </div>
           <div class="total col-md-1 col-xs-1" ng-click="basket.removeItem(basketItem)">
             <i class="fa fa-times" aria-hidden="true"></i>

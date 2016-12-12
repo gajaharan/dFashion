@@ -20,7 +20,7 @@
           </strong>
         </p>
         <div class="prices">
-        <span class="price">{{productItem.retailPrice | currency:"£":2}}</span>
+        <format-price product="productItem" is-basket="false"></format-price>
         <span class="savings red">
           <strong>
               <span> Stock:&nbsp;{{productItem.stock}} </span>
